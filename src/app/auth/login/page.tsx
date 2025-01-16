@@ -1,4 +1,4 @@
-import { Card, InputText } from "@/components";
+import { Card, InputText } from "@/components/atoms";
 import Image from "next/image";
 import React from "react";
 
@@ -23,16 +23,16 @@ export default function Login() {
         }}
       >
         <Card isScrollable={true} height="500px">
-          <div className="w-full h-full flex flex-col justify-center px-10">
-            <div className="mb-10 -mt-10">
-              <Image
-                src="/siap-logo.png"
-                alt="SIAP Logo"
-                width={100}
-                height={100}
-              />
-            </div>
-            <h1 className="text-xl font-bold text-gray-800 mb-4 text-left">
+          <div className="w-full px-10 my-10">
+            <Image
+              src="/siap-logo.png"
+              alt="SIAP Logo"
+              width={100}
+              height={100}
+            />
+          </div>
+          <div className="w-full h-full flex flex-col px-10">
+            <h1 className="text-xl font-bold text-gray-800 mb-5 text-left">
               Welcome Back!
             </h1>
             <div className="flex flex-col gap-4 w-full">

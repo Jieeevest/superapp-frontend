@@ -1,38 +1,37 @@
 import React from "react";
 
-interface InputTextProps {
+interface SelectProps {
+  optionValue: {
+    label: string;
+    value: string;
+  }[];
   label?: string;
   required?: boolean;
-  type?: string;
-  size?: "default" | "sm" | "lg";
-  border?: "default" | "danger" | "success";
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  size?: "sm" | "lg";
+  border?: "danger" | "success";
+  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   value?: string;
   isDisabled?: boolean;
-  placeholder?: string;
   className?: string;
 }
 
-const InputText: React.FC<InputTextProps> = ({
+const Select: React.FC<SelectProps> = ({
+  optionValue,
   label = "",
   required = false,
-  type = "text",
-  size = "default",
-  border = "default",
+  size,
+  border,
   onChange,
   value,
   isDisabled = false,
-  placeholder = "",
   className = "",
 }) => {
-  const inputSize = {
-    default: "",
-    sm: "input-sm",
-    lg: "input-lg",
+  const selectSize = {
+    sm: "select-sm",
+    lg: "select-lg",
   };
 
   const borderColor = {
-    default: "",
     danger: "border-danger",
     success: "border-success",
   };
@@ -50,23 +49,26 @@ const InputText: React.FC<InputTextProps> = ({
 
         {/* Input Container */}
         <div className="relative w-full">
-          {/* Optional Icon */}
-          {/* <i className="ki-outline ki-magnifier absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"></i> */}
-
-          <input
-            className={`input w-full ${inputSize[size] || ""} ${
-              borderColor[border] || ""
+          <select
+            className={`select ${size && selectSize[size]} ${
+              border && borderColor[border]
             }`}
+            name="select"
             disabled={isDisabled}
-            onChange={onChange}
-            placeholder={placeholder}
-            type={type}
             value={value}
-          />
+            onChange={onChange}
+          >
+            <option value="">Silahkan pilih data</option>
+            {optionValue.map((option) => (
+              <option key={option?.value} value={option?.value}>
+                {option?.label}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
     </div>
   );
 };
 
-export default InputText;
+export default Select;

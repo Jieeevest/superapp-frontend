@@ -34,7 +34,7 @@ const DefaultButton: React.FC<ButtonProps> = ({
       className={`${className} btn btn-${appearance} ${buttonType[type]}`}
       onClick={onClick}
     >
-      {icon && <i className={icon}></i>}
+      {icon && <i className={`ki-outline ${icon}`}></i>}
       {text}
     </button>
   );

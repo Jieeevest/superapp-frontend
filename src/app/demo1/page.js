@@ -21,8 +21,8 @@ import {
   Select,
   Switch,
   TextArea,
-} from "@/components";
-import Tooltip from "@/components/Tooltip";
+} from "@/components/atoms";
+import Tooltip from "@/components/atoms/Tooltip";
 
 import { Fragment, useState } from "react";
 
