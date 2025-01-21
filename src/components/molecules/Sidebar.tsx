@@ -21,17 +21,20 @@ interface SubNavItem {
 
 const navItems: NavItem[] = [
   {
-    href: "/",
+    href: "/workspace/dashboard",
     label: "Dashboard",
     icon: "ki-element-11",
     separator: "",
   },
   {
-    href: "/workspace/teams",
+    href: "",
     label: "Teams",
     icon: "ki-users",
     separator: "management",
-    subItems: [{ href: "/members", label: "Members", icon: "ki-users" }],
+    subItems: [
+      { href: "/workspace/teams", label: "Overview", icon: "ki-element-11" },
+      { href: "/workspace/teams/members", label: "Members", icon: "ki-users" },
+    ],
   },
   {
     href: "/workspace/roles",

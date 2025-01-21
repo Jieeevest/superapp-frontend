@@ -42,7 +42,7 @@ const TextArea: React.FC<TextAreaProps> = ({
       <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
         {/* Label */}
         {label && (
-          <label className="form-label max-w-32" htmlFor={label}>
+          <label className="form-label max-w-44" htmlFor={label}>
             {label}
             {required && <span className="text-danger">*</span>}
           </label>

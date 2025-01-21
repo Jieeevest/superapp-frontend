@@ -10,10 +10,10 @@ interface InputCheckboxProps {
 }
 
 const InputCheckbox: React.FC<InputCheckboxProps> = ({
-  label = "Checkbox",
+  label,
   checked,
   size,
-  onChange,
+  // onChange,
   isDisabled,
   className = "",
 }) => {
@@ -29,7 +29,7 @@ const InputCheckbox: React.FC<InputCheckboxProps> = ({
           className={`checkbox ${size && checkboxSize[size]}`}
           type="checkbox"
           checked={checked}
-          onChange={(e) => onChange && onChange(e.target.checked)}
+          // onChange={(e) => onChange && onChange(e.target.checked)}
           aria-checked={checked}
           disabled={isDisabled}
         />

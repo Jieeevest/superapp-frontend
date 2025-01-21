@@ -1,7 +1,8 @@
+"use client";
 import { Badge, DataTable } from "@/components/atoms";
-import Navbar from "@/components/molecules/Navbar";
-import Sidebar from "@/components/molecules/Sidebar";
-import React from "react";
+import DefaultButton from "@/components/atoms/Button";
+import { useRouter } from "next/navigation";
+import React, { Fragment } from "react";
 
 const columns = [
   { label: "", tooltip: "", icon: "" },
@@ -97,40 +98,40 @@ const data = [
   },
 ];
 
-export default function Teams() {
+export default function TeamsOverview() {
+  const router = useRouter();
   return (
-    <div className="flex h-screen relative">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-30"
-        style={{ backgroundImage: "url('/siap-background-1.png')" }}
-      />
-
-      {/* Sidebar */}
-      <div className="w-64 bg-white shadow-md flex-shrink-0">
-        <Sidebar />
-      </div>
-
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col relative">
-        {/* Navbar */}
-        <div className="w-full">
-          <Navbar />
-        </div>
-
-        {/* Page Content */}
-        <div className="px-10 overflow-auto bg-transparent pt-4 sm:px-6 lg:px-8 ">
-          <h1 className="text-2xl font-bold text-gray-800">Teams Overview</h1>
-          <p className="text-base text-gray-600 px-0.5 border-b-2 border-gray-400 pb-3">
-            Manage team access description.
-          </p>
-        </div>
-        <div className="px-10 overflow-auto bg-transparent pt-4 sm:px-6 lg:px-8 mt-5">
-          <div className="flex max-w-full">
-            <DataTable title="Team List" columns={columns} data={data} />
+    <Fragment>
+      <div className="px-10 overflow-auto bg-transparent pt-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center border-b-2 border-gray-300">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-800">Teams Overview</h1>
+            <p className="text-base text-gray-600 px-0.5 pb-3">
+              Manage team access description.
+            </p>
+          </div>
+          <div className="space-x-2">
+            <DefaultButton
+              type="pill"
+              appearance="dark"
+              text="View Logs"
+              icon="ki-archive-tick"
+            />
+            <DefaultButton
+              onClick={() => router.push("/workspace/teams/add")}
+              type="pill"
+              appearance="primary"
+              text="Add New Team"
+              icon="ki-plus-squared"
+            />
           </div>
         </div>
       </div>
-    </div>
+      <div className="px-10 overflow-auto bg-transparent pt-4 sm:px-6 lg:px-8 mt-5">
+        <div className="flex max-w-full">
+          <DataTable title="Team List" columns={columns} data={data} />
+        </div>
+      </div>
+    </Fragment>
   );
 }
